@@ -12,16 +12,21 @@ var swap = (array, firstIndex, secondIndex) => {
 };
 
 var indexOfMinimum = (array, startIndex) => {
-
-    var minValue = array[startIndex];
+    // console.log("Array Size: ",array.length)
     var minIndex = startIndex;
+    var minValue = array[minIndex];
+
+    // var counter  = 0
 
     for (var i = minIndex + 1; i < array.length; i++) {
         if (array[i] < minValue) {
             minIndex = i;
             minValue = array[i];
         }
+
+        // counter ++ 
     }
+    // console.log("Counter: ",counter)
     return minIndex;
 };
 
