@@ -11,7 +11,7 @@ describe("Test Selection Sort", () => {
         expect(selectionSort(array)).toEqual(sortedArray)
     });
 
-    // it(`Should return sorted array  = [${sortedArray2}]`, () => {
-    //     expect(selectionSort(array2)).toEqual(sortedArray2)
-    // })
+    it(`Should return sorted array  = [${sortedArray2}]`, () => {
+        expect(selectionSort(array2)).toEqual(sortedArray2)
+    })
 })
