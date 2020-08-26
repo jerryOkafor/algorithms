@@ -1,5 +1,7 @@
 # Algorithm - Javascript
 
+![Algorithm Tests - JS](https://github.com/jerryOkafor/alogirithm/workflows/Algorithm%20Tests%20-%20JS/badge.svg)
+
 ## Install
 
 Run 
