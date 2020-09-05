@@ -1,4 +1,4 @@
-var Queue = require("./../util/Queue")
+var Queue = require("../util/Queue")
 
 /*
  * Performs a breadth-first search on a graph

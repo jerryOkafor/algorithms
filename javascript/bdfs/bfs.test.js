@@ -1,4 +1,4 @@
-const doBFS = require("./bdfs").doBFS
+const doBFS = require("./bfs").doBFS
 // const printBFSInfo = require("./bdfs").printBFSInfo
 
 
