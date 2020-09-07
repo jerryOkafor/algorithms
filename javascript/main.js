@@ -1,5 +1,7 @@
 var merge = require('./mergeSort/mergeSort').merge
 var sortWithMerge = require('./mergeSort/mergeSort').sortWithMerge
+let CustomException = require('./util/CustomException')
+let findPermutations = require('./stringPermutation/stringPermutation')
 
 var partition = require('./quickSort/quickSort').partition
 var Stack = require('./util/Stack')
@@ -14,27 +16,30 @@ var Stack = require('./util/Stack')
 // var q = partition(array, 0, array.length - 1);
 // console.log("Array after partitioning: " + array);
 
-let stack = new Stack()
+// let stack = new Stack()
 
-stack.push(1)
-stack.push(2)
-stack.push(3)
-stack.push(4)
-stack.push(5)
-stack.push(6)
+// stack.push(1)
+// stack.push(2)
+// stack.push(3)
+// stack.push(4)
+// stack.push(5)
+// stack.push(6)
 
-stack.print()
+// stack.print()
 
-console.log("Peeking")
-console.log(stack.peek())
-console.log(stack.isEmpty())
-console.log("Length: ", stack.length)
+// console.log("Peeking")
+// console.log(stack.peek())
+// console.log(stack.isEmpty())
+// console.log("Length: ", stack.length)
 
-console.log("Poppin")
+// console.log("Poppin")
 
-console.log(stack.pop())
-console.log(stack.pop())
-console.log(stack.pop())
-console.log(stack.pop())
-console.log(stack.pop())
-console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+
+console.log(findPermutations("aabc", repeating = true))
+console.log(findPermutations("aabc", repeating = false))

@@ -1,26 +1,6 @@
 var Queue = require('./Queue')
 var Stack = require('./Stack')
 
-
-
-
-
-// stack.print()
-
-// console.log("Peeking")
-// console.log(stack.peek())
-// console.log(stack.isEmpty())
-// console.log("Length: ", stack.length)
-
-// console.log("Poppin")
-
-// console.log(stack.pop())
-// console.log(stack.pop())
-// console.log(stack.pop())
-// console.log(stack.pop())
-// console.log(stack.pop())
-// console.log(stack.pop())
-
 describe("Test Stack", () => {
     it("Should Pass for Stack: peek, pop, and push", () => {
         let stack = new Stack()
