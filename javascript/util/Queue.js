@@ -1,4 +1,8 @@
-/* A Queue object for queue-like functionality over JavaScript arrays. */
+/* 
+A Queue object for queue-like functionality over JavaScript arrays.
+Note: This uses a constructot function
+//Todo: Implement the same Queue class using es6
+ */
 var Queue = function () {
     this.items = [];
 };
