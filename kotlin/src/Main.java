@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /**
- Instructions
- - Upon completion the program should let two players play Tic Tac Toe
- - You can implement your own methods when you need to, or modify existing ones
- - The isGameWon() method has some bugs, you need to find the bugs and fix them
- - Implement the playing logic in the main function
- - Thinking of edge cases and handling them is a plus
- - executing input.nextLine(); in the main function will read input from the console
+ * Instructions
+ * - Upon completion the program should let two players play Tic Tac Toe
+ * - You can implement your own methods when you need to, or modify existing ones
+ * - The isGameWon() method has some bugs, you need to find the bugs and fix them
+ * - Implement the playing logic in the main function
+ * - Thinking of edge cases and handling them is a plus
+ * - executing input.nextLine(); in the main function will read input from the console
  */
 
 public class Main {
@@ -17,9 +17,15 @@ public class Main {
         TicTacToe game = new TicTacToe();
         game.printBoard();
 
+
     }
 
 }
+
+/*/*
+    yet another comment
+*/
+/* a strange /* // /* single-line comment */
 
 class TicTacToe {
     private char board[][] = {{'N', 'N', 'N'}, {'N', 'N', 'N'}, {'N', 'N', 'N'}};
@@ -27,15 +33,18 @@ class TicTacToe {
 
     public void printBoard() {
 
-    }
+        System.out.println(1);
+        System.out.println(2);
+        System.out.println(3);
 
-    public boolean isBoardFull() {
-
-    }
-
-    public boolean markCoordinates(String line) {
 
     }
+
+//    public boolean isBoardFull() { }
+
+//    public boolean markCoordinates(String line) {
+//
+//    }
 
     public boolean isGameWon() {
         boolean rowsWon, colsWon, diagWon;
@@ -49,8 +58,8 @@ class TicTacToe {
         }
 
         // check diag
-        if((board[0][0] == board[1][1]) && (board[1][1] == board[2][2])) diagWon = true;
-        if((board[0][2] == board[1][1]) && (board[1][1] == board[2][0])) diagWon = true;
+        if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2])) diagWon = true;
+        if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0])) diagWon = true;
         return rowsWon && colsWon && diagWon;
     }
 

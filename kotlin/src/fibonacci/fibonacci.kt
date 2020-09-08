@@ -65,7 +65,6 @@ fun fib2(n: Int): Int {
 tailrec fun fibonacciWithTailCall(n: Int, a: Int = 0, b: Int = 1): Int =
     if (n == 0) a else fibonacciWithTailCall(n - 1, b, a + b)
 
-
 /**
  * Tail Recursive
  *Returns the nth term of the fibonacci series based on the combinatorial definition for [BigInteger]

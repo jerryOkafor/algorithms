@@ -31,10 +31,10 @@ internal class TicTacToe {
 
     }
 
-    val isBoardFull: Boolean
-        get() {}
+//    val isBoardFull: Boolean
+//        get() {}
 
-    fun markCoordinates(line: String?): Boolean {}
+//    fun markCoordinates(line: String?): Boolean {}
     // check rows
     // check cols
 

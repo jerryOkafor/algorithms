@@ -5,6 +5,7 @@ let findPermutations = require('./stringPermutation/stringPermutation')
 
 var partition = require('./quickSort/quickSort').partition
 var Stack = require('./util/Stack')
+let findDays = require('./creepingSnail/creepingSnail')
 // var array = [3, 7, 12, 14, 2, 6, 9, 11];
 // merge(array, 0,
 //     Math.floor((0 + array.length - 1) / 2),
@@ -41,5 +42,8 @@ var Stack = require('./util/Stack')
 // console.log(stack.pop())
 // console.log(stack.pop())
 
-console.log(findPermutations("aabc", repeating = true))
-console.log(findPermutations("aabc", repeating = false))
+// console.log(findPermutations("aabc", repeating = true))
+// console.log(findPermutations("aabc", repeating = false))
+
+console.log(findDays(10, 3, 2))
+console.log(findDays(20, 7, 3))
