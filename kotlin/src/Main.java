@@ -13,7 +13,91 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        final int num = scanner.nextInt();
+
+        int current = 1;
+        int sqr = 0;
+        while (true) {
+            sqr = current * current;
+
+            if (sqr > num) {
+                break;
+            }
+
+            System.out.print(current + " : ");
+            System.out.println(sqr);
+
+            current++;
+        }
+
+
+//        final int m = scanner.nextInt();
+//        final int p = scanner.nextInt();
+//        final int k = scanner.nextInt();
+//
+//        int yearCount = 0;
+//        double sumM = m;
+//
+//        //Using I = PRT
+//        //new value = oldValue + I = oldValue + PRT
+//
+//        while (sumM < k) {
+//            sumM += sumM * p / 100.0 * 1;
+//            yearCount++;
+//        }
+//
+//
+//        System.out.println(yearCount);
+
+//        final long num = scanner.nextLong();
+//        long a = 1;
+//        int b = 0;
+//
+//        while (a <= num) {
+//            b++;
+//            a *= b;
+//        }
+//
+//        System.out.print(b);
+
+
+//        int currentNumber;
+//        int max = 0;
+//        do {
+//            final int number = scanner.nextInt();
+//            currentNumber = number;
+//            if (number > max) {
+//                max = number;
+//            }
+//        } while (scanner.hasNext() && currentNumber != 0);
+//
+//        System.out.print(max);
+
+
+//        int counter = number;
+//        System.out.print(counter + " ");
+//
+//        while (counter != 1) {
+//            if (counter % 2 == 0) {
+//                counter = counter / 2;
+//            } else {
+//                counter = (counter * 3) + 1;
+//            }
+//
+//            System.out.print(counter + " ");
+//        }
+
+
+//        int i = 0;
+//        while (i < 10) {
+//            i++;
+//            if (i % 2 == 0) {
+//                System.out.print(i + " ");
+//            }
+//        }
+
 //        TicTacToe game = new TicTacToe();
 //        game.printBoard()
 
@@ -78,6 +162,44 @@ public class Main {
 //            }
 //        }
 
+//        final int numOfElements = scanner.nextInt();
+//
+//        int sum = 0;
+//
+//        for (int i = 0; i < numOfElements; i++) {
+//            final int num = scanner.nextInt();
+//
+//            if (num % 6 == 0) {
+//                sum += num;
+//            }
+//        }
+
+//        System.out.print(sum);
+
+        //Returns 0
+//        int i = 0;
+//        for (int k = 0; k < 100; k++) {
+//            i = i++;
+////            i = ++i;
+//        }
+//        System.out.println(i);
+
+        //declaring variable outside the for-loop
+//        int i = 0;
+//        for (; i <= 10; i++) {
+//            System.out.print(i);
+//        }
+//
+//
+//        //infinite loop like while loop
+//        int counter = 0;
+//        for (; ; ) {
+//            System.out.print("I am here");
+//            counter++;
+//            if (counter > 50 && counter % 2 == 0) {
+//                break;
+//            }
+//        }
     }
 }
 

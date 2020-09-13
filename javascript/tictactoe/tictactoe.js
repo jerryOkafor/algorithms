@@ -1,3 +1,22 @@
+'use strict'
+//TicTacToa in Python: //https://techwithtim.net/tutorials/python-programming/tic-tac-toe-tutorial/
+//Refer to Strict Mode: https://www.w3schools.com/js/js_strict.asp
+//Stack Overfloe in Strict Mode: https://stackoverflow.com/questions/36444783/es6-javascript-declaring-variables-without-let-const
+
+/* 
+Why Strict Mode ?
+Strict mode makes it easier to write "secure" JavaScript.
+
+Strict mode changes previously accepted "bad syntax" into real errors.
+
+As an example, in normal JavaScript, mistyping a variable name creates a new global variable.In strict mode, this will throw an error, making it impossible to accidentally create a global variable.
+
+In normal JavaScript, a developer will not receive any error feedback assigning values to non - writable properties.
+
+In strict mode, any assignment to a non - writable property, a getter - only property, a non - existing property, a non - existing variable, or a non - existing object, will throw an error.
+ */
+
+
 const readline = require('readline');
 
 /**
@@ -24,7 +43,12 @@ const board = [
 
 let currentPlayer = 'X';
 
-readInput = () => {
+toggleCurrentPlayer = () => {
+    if (currentPlayer == 'X') { currentPlayer = 'O'; }
+    if (currentPlayer == 'O') { currentPlayer = 'X'; }
+}
+
+let readInput = () => {
     return new Promise((resolve, reject) => {
         rl.question(`${currentPlayer}'s move: `, (answer) => {
             resolve(answer);
@@ -33,7 +57,7 @@ readInput = () => {
 }
 
 // debug this function 
-isGameWon = () => {
+let isGameWon = () => {
     let rowsWon = colsWon = diagWon = false;
 
     for (let i = 0; i <= board.length; i++) {
@@ -46,14 +70,15 @@ isGameWon = () => {
     // Check diag
     if ((board[0][0] === board[1][1]) && (board[1][1] === board[2][2])) diagWon = true;
     if ((board[0][2] === board[1][1]) && (board[1][1] === board[2][0])) diagWon = true;
+
     return rowsWon && colsWon && diagWon;
 }
 
-isBoardFull = () => {
-
+let isBoardFull = () => {
+    console.log("I am here")
 }
 
-printBoard = () => {
+let printBoard = () => {
     for (let i = 0; i < board.length; i++) {
         let row = ""
         for (let j = 0; j < board[i].length; j++) {
@@ -66,18 +91,20 @@ printBoard = () => {
 
 }
 
-markCoordinates = (line) => {
+let markCoordinates = (line) => {
 
 }
 
 
-playGame = async () => {
-    printBoard();
+let playGame = async () => {
+    printBoard()
     // You can use this statement to read input from the console 
-    // let line = await readInput();
 
+    isBoardFull = false
+    console.log(isBoardFull)
+
+    // isBoardFull = true
+    // console.log(isBoardFull())
 }
 
 playGame();
-
-
