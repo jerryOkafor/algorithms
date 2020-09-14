@@ -294,3 +294,101 @@ Properties of arrow functions:
     that provide arguments object). You are free to use rest parameters (...params), though.
 */
 
+//4.1 Arrow functions provide context transparency as shown below:
+class Number {
+    constructor(array) {
+        this.array = array
+    }
+
+    addNumber(number) {
+        if (number !== undefined) {
+            this.array.push(number)
+        }
+
+        //with arrow function
+        // return (number) => {
+        //     console.log(this === numbersObject) // true
+        //     this.array.push(number)
+        // }
+
+        //without arrow function or extract `this` and save it in const variablel
+        return function (number) {
+            console.log(this === numbersObject) // true
+            this.array.push(number)
+        }.bind(this)
+    }
+}
+
+
+const numbersObject = new Number([])
+const numbersAddMethod = numbersObject.addNumber()
+
+numbersAddMethod(1)
+numbersAddMethod(5)
+console.log(numbersObject.array) // => [1,5]
+
+
+//5. Generator function
+/*
+The generator function in JavaScript returns a Generator object. Its syntax is similar
+to function expression, function declaration or method declaration, just that it
+requires a star character *.
+*/
+
+//Function declaration form function* <name>()
+function* indexGenerator() {
+    let index = 0
+    while (true) {
+        yield (index++)
+    }
+}
+
+const gen1 = indexGenerator()
+console.log(gen1.next().value) // => 0
+console.log(gen1.next().value) // => 1
+
+//Function expression form function* ()
+const indexGenerator2 = function* () {
+    let index = 0
+    while (true) {
+        yield (index++)
+    }
+}
+
+const gen2 = indexGenerator()
+console.log(gen2.next().value) // => 0
+console.log(gen2.next().value) // => 1
+
+//Shorthand method definition form *<name>()
+const obj = {
+    *indexGenerator() {
+        let index = 0
+        while (true) {
+            yield (index++)
+        }
+    }
+}
+
+const gen3 = obj.indexGenerator()
+console.log(gen3.next().value) // => 0
+console.log(gen3.next().value) // => 1
+
+//6. Using new Funtion
+const newFunction = new Function('numberA', 'numberB', 'return numberA + numberB');
+console.log(newFunction(10, 15)) //25
+console.log('\n\n');
+
+/*
+    The functions created this way don’t have access to the current scope, thus closures cannot be created.
+    They are always created in the global scope
+    On possible application of new Function is a better way to access the global object in a browser or NodeJs script
+    */
+
+(function () {
+    'use strict'
+    const global = new Function('return this')
+    console.log(global === global) // => true for Node
+    //console.log(global === window) // => true for Browser
+    console.log(this === global) // => false
+    //console.log(this === window) // => false
+})()
