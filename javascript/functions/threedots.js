@@ -1,0 +1,1 @@
+//https://dmitripavlutin.com/how-three-dots-changed-javascript/#21-rest-parameter
