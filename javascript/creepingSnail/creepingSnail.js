@@ -20,9 +20,13 @@ Sample Output 2:
 5
 */
 
-let findDay = (height, up, down) => {
-    var runninHeight = 0
-    var days = 0
+const findDays = (height, up, down) => {
+    //ensure that down != up else we will end up in an endless loop
+    if (up === down) {
+        throw new Error('Invalid params')
+    }
+    let runninHeight = 0
+    let days = 0
 
     while (true) {
         days++
@@ -34,7 +38,11 @@ let findDay = (height, up, down) => {
 
         runninHeight -= down
     }
+
     return days
 }
 
-module.exports = findDay
+module.exports = findDays
+
+
+//console.log(findDays(10, 3, 2))
