@@ -25,16 +25,23 @@ internal class TicTacToe {
         charArrayOf('N', 'N', 'N'),
         charArrayOf('N', 'N', 'N')
     )
+
+    //Represents the current pal,yer
     private val currentPlayer = 'X'
 
+    //prints the board at anytime
     fun printBoard() {
 
     }
 
-//    val isBoardFull: Boolean
-//        get() {}
+    val isBoardFull: Boolean
+        get() {
+            return true
+        }
 
-//    fun markCoordinates(line: String?): Boolean {}
+    fun markCoordinates(line: String?): Boolean {
+        return false
+    }
     // check rows
     // check cols
 

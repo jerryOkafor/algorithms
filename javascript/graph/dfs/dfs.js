@@ -3,6 +3,10 @@ let Stack = require('./../../util/Stack')
 Graph representation as adjacency list can be implemented in two or more forms as
 1. Using 2 Dimenesional arrays
 2. Using HasMap and HasSet
+
+Your choice of AdjacenyList or AdjacenyMatrix depends on on whether the graph is sparse or dense:
+1. Sparse  - AdjacenyList
+2. Dense - AdjacenyMatrix
 */
 
 //1. Using 2 Dimensional Array:
@@ -165,3 +169,12 @@ console.log(dfsConnected(adjacencyList, 3)) // => Set { 3, 2, 4, 1, 0, 5, 6 }
 
 //do dfs as disconnected graph, node 7 will be added to ensure that all node has been visited.
 console.log(dfsDisconnected(adjacencyList, 3)) // => Set { 3, 2, 4, 1, 0, 5, 6, 7 }
+
+
+let testList = new Map()
+testList.set('A', new Set(['B', 'C', 'D']))
+testList.set('B', new Set(['C']))
+testList.set('C', new Set(['A', 'B']))
+testList.set('D', new Set())
+testList.set('E', new Set(['B']))
+console.log(testList)

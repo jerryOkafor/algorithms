@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 //TicTacToa in Python: //https://techwithtim.net/tutorials/python-programming/tic-tac-toe-tutorial/
 //Refer to Strict Mode: https://www.w3schools.com/js/js_strict.asp
 //Stack Overfloe in Strict Mode: https://stackoverflow.com/questions/36444783/es6-javascript-declaring-variables-without-let-const
@@ -35,7 +35,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const board = [
+var board = [
     ['N', 'N', 'N'],
     ['N', 'N', 'N'],
     ['N', 'N', 'N']
@@ -43,21 +43,21 @@ const board = [
 
 let currentPlayer = 'X';
 
-toggleCurrentPlayer = () => {
+let toggleCurrentPlayer = () => {
     if (currentPlayer == 'X') { currentPlayer = 'O'; }
     if (currentPlayer == 'O') { currentPlayer = 'X'; }
 }
 
 let readInput = () => {
     return new Promise((resolve, reject) => {
-        rl.question(`${currentPlayer}'s move: `, (answer) => {
+        rl.question(`${currentPlayer}'s move - enter 1 - 9: `, (answer) => {
             resolve(answer);
         });
     });
 }
 
 // debug this function 
-let isGameWon = () => {
+isGameWon = () => {
     let rowsWon = colsWon = diagWon = false;
 
     for (let i = 0; i <= board.length; i++) {
@@ -79,19 +79,75 @@ let isBoardFull = () => {
 }
 
 let printBoard = () => {
-    for (let i = 0; i < board.length; i++) {
-        let row = ""
-        for (let j = 0; j < board[i].length; j++) {
+    // for (let i = 0; i < board.length; i++) {
+    //     let row = ""
+    //     for (let j = 0; j < board[i].length; j++) {
 
-            row = row + " " + board[i][j] + " "
+    //         row = row + " " + board[i][j] + " "
 
-        }
-        console.log(row)
-    }
+    //     }
+    //     console.log(row)
+    // }
+
+    console.table(board)
 
 }
 
-let markCoordinates = (line) => {
+markCoordinates = (line) => {
+    if (!Number.isInteger(line)) throw Error('Move must be number between 1 - 9')
+    if (![1, 2, 3, 4, 5, 6, 7, 8].includes(line)) throw Error('Move msut be between 1 and 9')
+
+    //also check if the board has been played
+    // console.log(board)
+
+    let board;
+    switch (line) {
+        case 1:
+            board = board[0][0]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 2:
+            board = board[0][1]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 3:
+            board = board[0][2]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 4:
+            board = board[1][0]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 5:
+            board = board[1][1]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 6:
+            baord = board[1][2]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 7:
+            baord = board[2][0]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 8:
+            baord = board[2][1]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+        case 9:
+            baord = board[2][2]
+            if (board == currentPlayer) throw Error('Move is not avaliable')
+            board = currentPlayer
+            break;
+    }
 
 }
 
@@ -100,11 +156,20 @@ let playGame = async () => {
     printBoard()
     // You can use this statement to read input from the console 
 
-    isBoardFull = false
-    console.log(isBoardFull)
+    while (true) {
+        if (!isGameWon) {
+            break
+        }
 
-    // isBoardFull = true
-    // console.log(isBoardFull())
+        try {
+            let line = await readInput()
+            console.log(`Input: ${line}`)
+            markCoordinates(Number(line))
+        } catch (error) {
+            console.log(`Error: ${error}`)
+            // playGame()
+        }
+    }
 }
 
 playGame();
