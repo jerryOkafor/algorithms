@@ -15,6 +15,7 @@ when looking at the current interval, if it overlaps with the previous one, we c
 Note: Since we have to sort the list, this runs in O(n log n)
 """
 
+
 def overlappingIntervals(intervals):
     result = []
 

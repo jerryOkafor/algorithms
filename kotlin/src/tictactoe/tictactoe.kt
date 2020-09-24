@@ -13,7 +13,7 @@ import java.util.*
  */
 
 fun main(args: Array<String>) {
-    val input = Scanner(System.`in`)
+    val input = readLine()
     val game = TicTacToe()
     game.printBoard()
 }
@@ -42,18 +42,17 @@ internal class TicTacToe {
     fun markCoordinates(line: String?): Boolean {
         return false
     }
+
+
     // check rows
     // check cols
-
     // check diag
     val isGameWon: Boolean
         get() {
-            var rowsWon: Boolean
-            var colsWon: Boolean
-            var diagWon: Boolean
-            diagWon = false
-            colsWon = diagWon
-            rowsWon = colsWon
+            var rowsWon = false
+            var colsWon = false
+            var diagWon = false
+
             for (i in 0..board.size) {
                 // check rows
                 if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) rowsWon = true
@@ -64,6 +63,7 @@ internal class TicTacToe {
             // check diag
             if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) diagWon = true
             if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) diagWon = true
+
             return rowsWon && colsWon && diagWon
         }
 }
