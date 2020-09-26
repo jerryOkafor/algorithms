@@ -3,6 +3,7 @@ package twosum
 import utils.measure
 import java.util.*
 import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 /**
  * @author jerry on 25/09/2020
@@ -59,40 +60,157 @@ fun twoSumEfficient(array: Array<Int>, target: Int): Array<Int> {
    - else, decrement the right index.
 */
 //Complexity: O(n*log(n))
-fun twoSum2Pointer(array: Array<Int>, target: Int): Array<Int> {
-    Arrays.sort(array)
+fun twoSum2Pointer(numbers: IntArray, target: Int): IntArray {
+//    Arrays.sort(array)
 
     var left = 0
-    var right = array.count() - 1
+    var right = numbers.count() - 1
 
     while (left < right) {
         when {
-            array[left] + array[right] == target -> {
-                return arrayOf(left, right)
+            numbers[left] + numbers[right] == target -> {
+                return intArrayOf(left, right)
             }
-            array[left] + array[right] < target -> {
+            numbers[left] + numbers[right] < target -> {
                 left++
             }
             else -> {
-                right++
+                right--
             }
         }
     }
-    return emptyArray()
+    return intArrayOf()
 }
 
+
+class TreeNode(var `val`: Int) {
+    var left: TreeNode? = null
+    var right: TreeNode? = null
+}
+
+fun findTarget(root: TreeNode?, k: Int): Boolean {
+    if (root == null) return false
+
+    val numbers = HashSet<Int>()
+
+    //add root
+    numbers.add(root.`val`)
+
+    //check left and right sub tree
+
+    return visitDepth(root.left, k, numbers) || visitDepth(root.right, k, numbers)
+}
+
+fun visitDepth(root: TreeNode?, k: Int, numbers: HashSet<Int>): Boolean {
+    if(root == null) return false
+
+    val diff = k - root.`val`
+
+    if(numbers.contains(diff)) return true
+
+    numbers.add(root.`val`)
+
+    return visitDepth(root.left, k, numbers) || visitDepth(root.right, k, numbers)
+
+}
+
+//fun findTarget(root: TreeNode?, k: Int): Pair<Int, Int>? {
+//    if (root == null) return null
+//
+//    val numbers = HashSet<Int>() //O(n) lookup
+//    numbers.add(root.`val`)
+//    val queue: Queue<TreeNode> = LinkedList() //implementation of queue
+//    queue.add(root)
+//
+//    while (queue.isNotEmpty()) {
+//        val current = queue.poll()
+//
+//        val diff = k - current.`val`
+//        if (numbers.contains(diff)) return Pair(current.`val`, diff)
+//        else {
+//            //add left and right to both set and queue
+//            current.left?.let {
+//                numbers.add(it.`val`)
+//                queue.add(it)
+//            }
+//
+//            current.right?.let {
+//                numbers.add(it.`val`)
+//                queue.add(it)
+//            }
+//        }
+//    }
+//    return null
+//}
+
+fun findTargetWithQueue(root: TreeNode?, k: Int): Boolean {
+    if (root == null) return false
+    if (root.right == null || root.left == null) return false //we need at least 2 nodes
+
+
+    val numbers = HashSet<Int>() //O(n) lookup
+    numbers.add(root.`val`)
+    val queue: Queue<TreeNode> = LinkedList() //implementation of queue
+    queue.add(root)
+
+    while (queue.isNotEmpty()) {
+        val current = queue.poll()
+
+        val diff = if (k < 0) k + current.`val` else k - current.`val`
+        if (numbers.contains(diff)) return true
+        else {
+            //add left and right to both set and queue
+            current.left?.let {
+                numbers.add(it.`val`)
+                queue.add(it)
+            }
+
+            current.right?.let {
+                numbers.add(it.`val`)
+                queue.add(it)
+            }
+        }
+    }
+    return false
+}
+
+
 fun main() {
-    measure("2 Sum Naive") {
-        println(twoSumNaive(arrayOf(2, 7, 11, 15), 9).contentToString())
+//    measure("2 Sum Naive") {
+//        println(twoSumNaive(arrayOf(2, 7, 11, 15), 9).contentToString())
+//    }
+//
+//    measure("2 Sum Efficient") {
+//        println(twoSumEfficient(arrayOf(2, 7, 11, 15), 9).contentToString())
+//    }
+
+//    measure("2 Sum 2 Pointer") {
+//        println(twoSum2Pointer(intArrayOf(2, 7, 11, 15), 9).contentToString())
+//    }
+    val one = TreeNode(1)
+    val two = TreeNode(2)
+    val four = TreeNode(4)
+    val seven = TreeNode(7)
+
+    val three = TreeNode(3)
+    three.left = two
+    three.right = four
+
+    val six = TreeNode(6)
+    six.right = seven
+
+    val five = TreeNode(5)
+    five.right = three
+    five.left = six
+
+
+//    val treeNode = arrayOf(five, three, six, four, null, seven)
+    val treeNode = arrayOf(one)
+
+    measure("Target for BST") {
+        println(findTargetWithQueue(one, k = 2))
     }
 
-    measure("2 Sum Efficient") {
-        println(twoSumEfficient(arrayOf(2, 7, 11, 15), 9).contentToString())
-    }
-
-    measure("2 Sum 2 Pointer") {
-        println(twoSumEfficient(arrayOf(2, 7, 11, 15), 9).contentToString())
-    }
 }
 
 //git mv foldername tempname && git mv tempname folderName
