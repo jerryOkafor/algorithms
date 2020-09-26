@@ -59,10 +59,8 @@ fun twoSumEfficient(array: Array<Int>, target: Int): Array<Int> {
    - if arr[left] + arr[right] < target, increment the left index.
    - else, decrement the right index.
 */
-//Complexity: O(n*log(n))
+//Complexity: O(n*log(n)) works for sorted Array - Arrays.sort(array)
 fun twoSum2Pointer(numbers: IntArray, target: Int): IntArray {
-//    Arrays.sort(array)
-
     var left = 0
     var right = numbers.count() - 1
 
