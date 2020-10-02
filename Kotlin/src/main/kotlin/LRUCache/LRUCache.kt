@@ -42,20 +42,20 @@ class LRUCache {
             removeNode(entry)
             addAtTop(entry)
         } else {
-            val newnode = Entry()
-            newnode.left = null
-            newnode.right = null
-            newnode.value = value
-            newnode.key = key
+            val newNode = Entry()
+            newNode.left = null
+            newNode.right = null
+            newNode.value = value
+            newNode.key = key
             if (hashmap.size > LRU_SIZE) {
                 // We have reached maxium size so need to make room for new element.
                 hashmap.remove(end!!.key)
                 removeNode(end)
-                addAtTop(newnode)
+                addAtTop(newNode)
             } else {
-                addAtTop(newnode)
+                addAtTop(newNode)
             }
-            hashmap[key] = newnode
+            hashmap[key] = newNode
         }
     }
 
@@ -88,15 +88,15 @@ class LRUCache {
 
 fun main(args: Array<String>) {
     // your code goes here
-    val lrucache = LRUCache()
-    lrucache.putEntry(1, 1)
-    lrucache.putEntry(10, 15)
-    lrucache.putEntry(15, 10)
-    lrucache.putEntry(10, 16)
-    lrucache.putEntry(12, 15)
-    lrucache.putEntry(18, 10)
-    lrucache.putEntry(13, 16)
-    println(lrucache.getEntry(1))
-    println(lrucache.getEntry(10))
-    println(lrucache.getEntry(15))
+    val lruCache = LRUCache()
+    lruCache.putEntry(1, 1)
+    lruCache.putEntry(10, 15)
+    lruCache.putEntry(15, 10)
+    lruCache.putEntry(10, 16)
+    lruCache.putEntry(12, 15)
+    lruCache.putEntry(18, 10)
+    lruCache.putEntry(13, 16)
+    println(lruCache.getEntry(1))
+    println(lruCache.getEntry(10))
+    println(lruCache.getEntry(15))
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
+    <pages>
+        <page name='BalancedParenthesis'/>
+        <page name='2Sum'/>
+        <page name='LRUCache'/>
+        <page name='MajorityElement'/>
+        <page name='Boogle'/>
+    </pages>
+</playground>

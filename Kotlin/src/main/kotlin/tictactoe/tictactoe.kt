@@ -1,7 +1,5 @@
 package tictactoe
 
-import java.util.*
-
 /**
  * Instructions
  * - Upon completion the program should let two players play Tic Tac Toe
