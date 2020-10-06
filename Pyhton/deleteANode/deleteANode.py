@@ -34,15 +34,6 @@ def delete_node(node_to_delete):
         raise Exception("Can't delete the last node with this technique")
 
 
-print(a.next.value)
-print(b.next)
-print(c.value)
-
-delete_node(b)
-
-print(a.next.value)
-print(c.value)
-
 """
 Side Effects:
 
