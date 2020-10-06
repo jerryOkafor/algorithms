@@ -9,6 +9,7 @@ import kotlin.collections.HashSet
  * @author jerry on 25/09/2020
  * for Kotlin
  **/
+
 //https://www.callicoder.com/two-sum-problem/
 /*
 Given an array of integers nums and an integer target, return indices of the two numbers
@@ -21,6 +22,10 @@ Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
 Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 * */
+
+//Asumptions:
+//1. Each input will have one solution
+//2. An element can not be used twice.
 
 //Solution 1: Naive Approach|Bruteforce.
 //Time complexity: O(n^2)
@@ -35,6 +40,7 @@ fun twoSumNaive(array: Array<Int>, target: Int): Array<Int> {
 
 //Solution 2: Use HashMap for lookup table  - Most Efficient
 //Time Complexity: O(n)
+//Here we reduce the Time Complexity from O(n^2) to O(n) by trading space for time.
 fun twoSumEfficient(array: Array<Int>, target: Int): Array<Int> {
     val numMap = HashMap<Int, Int>() //has O(1) for set, get and for containsKey()
 
