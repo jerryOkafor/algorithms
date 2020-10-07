@@ -73,17 +73,20 @@ fun threeSumBF(numbers: IntArray): Array<IntArray> {
 //    }
 
     loop1@ while (i < length) {
-        if (i > 0 && numbers[i] == numbers[i - 1]) continue@loop1
+        if (i > 0 && numbers[i] == numbers[i - 1]) break@loop1
         var j = i + 1
+
         loop2@ while (j < length) {
             print("${j > i + 1} ")
             println(numbers[j] == numbers[j - 1])
-            if (j > i + 1 && numbers[j] == numbers[j - 1]) continue@loop2
+            if (j > i + 1 && numbers[j] == numbers[j - 1]) break@loop2
 
             var k = j + 1
             loop3@ while (k < length) {
+                if (k > j + 1 && numbers[k] == numbers[k - 1]) break@loop3
                 if (numbers[i] + numbers[j] + numbers[k] == 0) {
                     println("$i $j $k")
+                    result.add(intArrayOf(i, j, k))
                 }
                 k++
             }
@@ -96,5 +99,8 @@ fun threeSumBF(numbers: IntArray): Array<IntArray> {
 }
 
 fun main() {
-    threeSumBF(intArrayOf(-1, 2, -1, 0, 1, -4))
+    threeSumBF(intArrayOf(-1, 2, -1, 0, 1, -4)).forEach {
+        println(it.contentToString() )
+    }
 }
+
