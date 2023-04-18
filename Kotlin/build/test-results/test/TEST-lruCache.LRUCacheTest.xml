@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lruCache.LRUCacheTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-09-25T03:29:51" hostname="Jerrys-MBP" time="0.018">
-  <properties/>
-  <testcase name="putEntry()" classname="lruCache.LRUCacheTest" time="0.017"/>
-  <testcase name="getEntry()" classname="lruCache.LRUCacheTest" time="0.0"/>
-  <system-out><![CDATA[I am hereI am here]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
