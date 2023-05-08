@@ -8,6 +8,8 @@
 
 package stringPermutationWithRecurision
 
+import kotlin.reflect.typeOf
+
 /**
 Write arecursive function for genrating all permutations of an input
 String. Return them as a set.
@@ -53,6 +55,7 @@ fun stringPermutationWithRecursion(string: String): Set<String> {
 
     //Use recursion to get all possible permutations for all chars except last
     val permutations = stringPermutationWithRecursion(allCharsExceptLast)
+
     val allPermutations = mutableSetOf<String>()
     for (permutation in permutations) {
         val n = allCharsExceptLast.length
