@@ -6,9 +6,8 @@
 * @Date : 06/05/2023
 */
 
-package algoexpert
+package algoexpert.twoNumberSum
 
-import kotlin.streams.toList
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
