@@ -8,10 +8,92 @@
 
 package validbracket
 
+import java.util.Stack
+import kotlin.collections.ArrayDeque
+
+//This solution assumes that we are dealing only with brackets
+//if that is not the case, we can consider using regX
+fun isValid2(input: String?): Boolean {
+    if (input == null || (input.length % 2) != 0) return false
+
+    var str: String = input
+
+    while (str.contains("[]") || str.contains("{}") || str.contains("()")) {
+        str = str.replace("()", "")
+            .replace("[]", "")
+            .replace("{}", "");
+    }
+
+    return str.isEmpty()
+}
+
+//uses stack since ArrayDeque was added in kotlin 1.4
+fun validBraces(braces: String): Boolean {
+    //Assumptions:
+    //1. All input will be non-empty
+    //2. Consists of valid opening and closing braces.
+
+    //basic input validation -> input must not be null and count must be even
+    if ((braces.length % 2) != 0) return false
+
+    val stack = Stack<Char>()
+
+    for (char in braces) {
+        if (char == '[' || char == '{' || char == '(') {
+            //handle opening braces
+            stack.push(char)
+        } else {
+            //if it not an opening bracket and the deck is empty, we return false
+            if (stack.isEmpty()) return false
+
+            //handle closing braces
+            when (char) {
+                ']' -> {
+                    //get and compare
+                    val topBraces = stack.peek()
+
+                    //we have a closing braces, hence we are expecting an opening braces
+                    if (topBraces != '[') return false
+
+                    //finally pop this item
+                    stack.pop()
+                }
+
+                '}' -> {
+                    //get and compare
+                    val topBraces = stack.peek()
+
+                    //we have a closing braces, hence we are expecting an opening braces
+                    if (topBraces != '{') return false
+
+                    //finally pop this item
+                    stack.pop()
+                }
+
+                ')' -> {
+                    //get and compare
+                    val topBraces = stack.peek()
+
+                    //we have a closing braces, hence we are expecting an opening braces
+                    if (topBraces != '(') return false
+
+                    //finally pop this item
+                    stack.pop()
+                }
+            }
+
+        }
+
+    }
+    return stack.isEmpty()
+}
+
+
 //Given an expression string exp, write a program to examine whether
 // the pairs and the orders of “{“, “}”, “(“, “)”, “[“, “]” are correct
 // in the given expression.
 
+//Runs in O(n) time and space
 fun isValid(input: String?): Boolean {
     //basic input validation -> input must not be null and count must be even
     if (input == null || (input.length % 2) != 0) return false
@@ -74,28 +156,20 @@ fun isValid(input: String?): Boolean {
         }
     }
 
-    return true
-}
-
-fun isValid2(input: String?): Boolean {
-    if (input == null || (input.length % 2) != 0) return false
-
-    var str: String = input
-
-    while (str.contains("[]") || str.contains("{}") || str.contains("()")) {
-        str = str.replace("()", "")
-            .replace("[]", "")
-            .replace("{}", "");
-    }
-
-    return str.isEmpty()
+    return stack.isEmpty()
 }
 
 fun main() {
-//    println("Is valid: ${isValid(null)}")
-//    println("Is valid: ${isValid("[()]{}{[()()]()}")}")
-//    println("Is valid: ${isValid2("[()]{}{[()()]()}")}")
-//    println("Is valid: ${isValid("[()]{}{c[()()]c()}")}")
+    println("Is valid: ${isValid(null)}")
+    println("Is valid: ${isValid("[()]{}{[()()]()}")}")
+    println("Is valid: ${isValid2("[()]{}{[()()]()}")}")
+    println("Is valid: ${isValid("[()]{}{c[()()]c()}")}")
+
+    println()
+//    println("Is valid: ${validBraces(null)}")
+    println("Is valid: ${validBraces("[()]{}{[()()]()}")}")
+    println("Is valid: ${validBraces("[()]{}{[()()]()}")}")
+    println("Is valid: ${validBraces("[()]{}{c[()()]c()}}")}")
 }
 
 ///Other solutions:

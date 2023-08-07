@@ -46,22 +46,3 @@ fun main() {
     println(isPalindrome("racecar"))
     println(isPalindrome("here"))
 }
-
-enum class JobStatus {
-    PROCESSING, SUCCESSFUL, FAILED
-}
-
-data class ClaimJob(
-    val claimId: String,
-    val amount: Double,
-    val notes: String,
-    val Status: JobStatus,
-    val message: String?
-)
-
-data class DocumentJob(
-    val type: String,
-    val notes: String,
-    val Status: JobStatus,
-    val message: String?
-)
