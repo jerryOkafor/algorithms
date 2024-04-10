@@ -30,7 +30,7 @@ fun twoNumberSum1(array: MutableList<Int>, targetSum: Int): List<Int> {
                 return listOf(n1, n2)
         }
     }
-    return listOf<Int>()
+    return listOf()
 }
 
 /**
@@ -61,7 +61,7 @@ fun twoNumberSum2(array: MutableList<Int>, targetSum: Int): List<Int> {
         }
 
     }
-    return listOf<Int>()
+    return listOf()
 }
 
 /**
@@ -83,7 +83,7 @@ fun twoNumberSum3(array: MutableList<Int>, targetSum: Int): List<Int> {
 
         visited.add(item)
     }
-    return listOf<Int>()
+    return listOf()
 }
 
 @OptIn(ExperimentalTime::class)

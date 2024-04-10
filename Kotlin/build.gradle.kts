@@ -1,8 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "2.0.0-RC1"
 }
 
 group = "org.example"
@@ -13,10 +14,15 @@ repositories {
 }
 
 dependencies {
+
+    implementation("org.jetbrains.kotlin:kotlin-reflect:2.0.0-RC1")
+    implementation(kotlin("stdlib-jdk8"))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
-    implementation(kotlin("stdlib-jdk8"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1-Beta")
 }
 
 java {
@@ -27,11 +33,13 @@ java {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+
 val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = JavaVersion.VERSION_17.toString()
+compileKotlin.compilerOptions {
+    jvmTarget.set(JvmTarget.JVM_17)
 }
+
 val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = JavaVersion.VERSION_17.toString()
+compileTestKotlin.compilerOptions {
+    jvmTarget.set(JvmTarget.JVM_17)
 }

@@ -23,6 +23,10 @@ package palindrome
 /**
  * A palindrome is a word, number, phrase, or other sequence of characters
  * which reads the same backward as forward, such as madam or racecar
+ *
+ * Note: This is implemented using tailrec: tailrec marks a function as tail-recursive
+ * (allowing the compiler to replace recursion with iteration). This is because a recursion function will/may
+ * cause the stackOverflowError when the number of recursive-calls is significant enough.
  * */
 tailrec fun isPalindrome(s: String): Boolean {
 
@@ -34,15 +38,17 @@ tailrec fun isPalindrome(s: String): Boolean {
     //base case #2, first and last char must be the same
     if (s.first() != s.last()) return false
 
+    println("Checking for: $s")
+
     //remove the first and last chars and recurse
     return isPalindrome(s.substring(1, N - 1))
 }
 
 fun main() {
-    val s = "madam"
-    println(s.slice(1 until s.length - 1))
-    println(s.subSequence(1, s.length - 1))
-    println(isPalindrome("madam"))
+//    val s = "madam"
+//    println(s.slice(1 until s.length - 1))
+//    println(s.subSequence(1, s.length - 1))
+//    println(isPalindrome("madam"))
     println(isPalindrome("racecar"))
-    println(isPalindrome("here"))
+//    println(isPalindrome("here"))
 }

@@ -87,7 +87,7 @@ fun twoSum2Pointer(numbers: IntArray, target: Int): IntArray {
 }
 
 
-class TreeNode(var `val`: Int) {
+class TreeNode(var value: Int) {
     var left: TreeNode? = null
     var right: TreeNode? = null
 }
@@ -98,7 +98,7 @@ fun findTarget(root: TreeNode?, k: Int): Boolean {
     val numbers = HashSet<Int>()
 
     //add root
-    numbers.add(root.`val`)
+    numbers.add(root.value)
 
     //check left and right sub tree
 
@@ -108,11 +108,11 @@ fun findTarget(root: TreeNode?, k: Int): Boolean {
 fun visitDepth(root: TreeNode?, k: Int, numbers: HashSet<Int>): Boolean {
     if(root == null) return false
 
-    val diff = k - root.`val`
+    val diff = k - root.value
 
     if(numbers.contains(diff)) return true
 
-    numbers.add(root.`val`)
+    numbers.add(root.value)
 
     return visitDepth(root.left, k, numbers) || visitDepth(root.right, k, numbers)
 
@@ -153,24 +153,24 @@ fun findTargetWithQueue(root: TreeNode?, k: Int): Boolean {
 
 
     val numbers = HashSet<Int>() //O(n) lookup
-    numbers.add(root.`val`)
+    numbers.add(root.value)
     val queue: Queue<TreeNode> = LinkedList() //implementation of queue
     queue.add(root)
 
     while (queue.isNotEmpty()) {
         val current = queue.poll()
 
-        val diff = if (k < 0) k + current.`val` else k - current.`val`
+        val diff = if (k < 0) k + current.value else k - current.value
         if (numbers.contains(diff)) return true
         else {
             //add left and right to both set and queue
             current.left?.let {
-                numbers.add(it.`val`)
+                numbers.add(it.value)
                 queue.add(it)
             }
 
             current.right?.let {
-                numbers.add(it.`val`)
+                numbers.add(it.value)
                 queue.add(it)
             }
         }

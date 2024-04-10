@@ -52,7 +52,6 @@ fun stringPermutationWithRecursion(string: String): Set<String> {
 
     val allCharsExceptLast = string.substringBeforeLast("")
     val lastChar = string.last()
-
     //Use recursion to get all possible permutations for all chars except last
     val permutations = stringPermutationWithRecursion(allCharsExceptLast)
 
@@ -69,5 +68,5 @@ fun stringPermutationWithRecursion(string: String): Set<String> {
 }
 
 fun main() {
-    println(stringPermutationWithRecursion("cats"))
+    println(stringPermutationWithRecursion("cat"))
 }
