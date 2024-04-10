@@ -1,5 +1,6 @@
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 /*
@@ -30,24 +31,16 @@ fun charCount(chars: String): String {
         }
     }
 
-    val result = StringBuilder()
-
-    charMap.toSortedMap()
-        .forEach { (key, value) ->
-            if (value > 1) {
-                result.append("$key$value")
-            } else {
-                result.append("$key")
-            }
-        }
-
-
-    return result.toString()
+    return charMap.toSortedMap().entries.fold("") { acc, (key, value) ->
+        acc + (if (value > 1) {
+            "$key$value"
+        } else {
+            "$key"
+        })
+    }
 }
 
-
-//A string ‘aabbcccdeff’ :  count the number of letters
-//---> A2b2c3def2
+//A string "aabbcccdeff" :  count the number of letters ---> "a2b2c3def2"
 
 suspend fun main() = coroutineScope {
     launch {

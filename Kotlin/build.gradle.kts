@@ -43,3 +43,19 @@ val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.compilerOptions {
     jvmTarget.set(JvmTarget.JVM_17)
 }
+
+kotlin {
+    sourceSets.all {
+        languageSettings {
+            languageVersion = "2.0"
+        }
+    }
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        freeCompilerArgs.addAll(
+            "-XXLanguage:+ExplicitBackingFields"
+        )
+    }
+}
